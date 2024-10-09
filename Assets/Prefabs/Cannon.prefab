@@ -182,7 +182,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1861302911656848750, guid: 0402c8ed8fa8e4ba0a63f0f34d78987c, type: 3}
   bulletSpawnPoint: {fileID: 1057969820755257607}
   bulletSpeed: 10
-  fireRate: 0.5
   kills: 0
 --- !u!1 &3663753136178153599
 GameObject:

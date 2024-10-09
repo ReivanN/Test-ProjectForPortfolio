@@ -3,7 +3,7 @@ using TMPro;
 
 public class BlockStandart : MonoBehaviour
 {
-    private float speed = 1f;
+    private float speed = 0.5f;
     public GameObject block;
     public float HP = 5f;
     private float currentHealth;

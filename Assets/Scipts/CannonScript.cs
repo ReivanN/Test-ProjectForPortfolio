@@ -11,6 +11,7 @@ public class CannonScript : MonoBehaviour
     private float currentFireRate = 0.11f;   // Используем только эту переменную для частоты стрельбы
     private float nextFireTime = 0f;
     public int kills;
+    public bool win = false;
 
     void Start()
     {
@@ -81,6 +82,11 @@ public class CannonScript : MonoBehaviour
         else if(kills >= 3)
         {
             //currentFireRate = 0.1f;   // Максимальная скорость
+        }
+
+        if(kills == 20)
+        {
+            win =true;
         }
     }
 }
