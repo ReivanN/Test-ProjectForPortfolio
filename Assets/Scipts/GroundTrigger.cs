@@ -12,6 +12,7 @@ public class GroundTrigger : MonoBehaviour
         if (block != null)
         {
             Debug.LogError("You Lose");
+            Time.timeScale = 0f;
             canvas.gameObject.SetActive(true);
             YouLose.SetActive(true);
 

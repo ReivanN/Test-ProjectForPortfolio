@@ -157,7 +157,7 @@ MonoBehaviour:
   Bonus_Cannon: {fileID: 0}
   Bonus_speedBullet: {fileID: 0}
   Bonus_Lazer: {fileID: 0}
-  HP: 5
+  HP: 20
   kills: 0
   healthText: {fileID: 1925541788826312189}
   layerMask:

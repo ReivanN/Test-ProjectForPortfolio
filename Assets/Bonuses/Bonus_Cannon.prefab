@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 250507085267139761}
   - component: {fileID: 6754527640348593984}
   - component: {fileID: -1011101592382880057}
-  - component: {fileID: 1680255892243134425}
   m_Layer: 0
   m_Name: Bonus_Cannon
-  m_TagString: Untagged
+  m_TagString: bonus_cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,15 +166,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CannonBonus: 0
---- !u!114 &1680255892243134425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6717537579512148954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acd22a289bf614f30bb14b08641e1644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

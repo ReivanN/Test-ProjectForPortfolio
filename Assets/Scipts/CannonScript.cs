@@ -27,11 +27,6 @@ public class CannonScript : MonoBehaviour
 
     void Update()
     {
-        if(bonus_Canon.CannonBonus == true)
-        {
-            Instantiate(Cannon, cannonSpawnPoint.position, cannonSpawnPoint.rotation);
-            Cannon.transform.SetParent(CannonParent.transform);
-        }
         Debug.LogError("Current bullet speed: " + currentFireRate);
 
         if (Time.time > nextFireTime)
@@ -89,6 +84,17 @@ public class CannonScript : MonoBehaviour
         if(kills == 20)
         {
             win =true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "bonus_cannon")
+        {
+            Instantiate(Cannon, cannonSpawnPoint.position, cannonSpawnPoint.rotation);
+            Cannon.transform.SetParent(CannonParent.transform);
+            Cannon.transform.localScale = new Vector3(0.25f, 0.5f, 0);
+            Destroy(other.gameObject);
         }
     }
 }

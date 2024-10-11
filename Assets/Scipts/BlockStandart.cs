@@ -3,7 +3,7 @@ using TMPro;
 
 public class BlockStandart : MonoBehaviour
 {
-    private float speed = 0.5f;
+    private float speed = 0.3f;
     public GameObject block;
     public GameObject Bonus_Cannon;
     public GameObject Bonus_speedBullet;
