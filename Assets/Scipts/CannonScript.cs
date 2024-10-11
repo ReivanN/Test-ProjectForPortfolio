@@ -6,13 +6,17 @@ public class CannonScript : MonoBehaviour
     public float moveSpeed = 5f;
     private float minX, maxX;
     public GameObject bulletPrefab;
+    public GameObject CannonParent;
+    public GameObject Cannon;
     public Transform bulletSpawnPoint;
+    public Transform cannonSpawnPoint;
     public float bulletSpeed = 10f;
-    private float currentFireRate = 0.11f;   // Используем только эту переменную для частоты стрельбы
+    private float currentFireRate = 0.11f;
     private float nextFireTime = 0f;
     public int kills;
     public bool win = false;
 
+    [SerializeField] private Bonus_Canon bonus_Canon;
     void Start()
     {
         Camera cam = Camera.main;
@@ -23,16 +27,18 @@ public class CannonScript : MonoBehaviour
 
     void Update()
     {
+        if(bonus_Canon.CannonBonus == true)
+        {
+            Instantiate(Cannon, cannonSpawnPoint.position, cannonSpawnPoint.rotation);
+            Cannon.transform.SetParent(CannonParent.transform);
+        }
         Debug.LogError("Current bullet speed: " + currentFireRate);
 
-        // Стреляем, если время для следующего выстрела наступило
         if (Time.time > nextFireTime)
         {
             Shoot();
-            nextFireTime = Time.time + currentFireRate; // Используем текущую частоту стрельбы
+            nextFireTime = Time.time + currentFireRate;
         }
-
-        // Управление перемещением с помощью тач или мыши
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -62,26 +68,22 @@ public class CannonScript : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = bulletSpawnPoint.up * bulletSpeed; // Скорость пули
+        rb.linearVelocity = bulletSpawnPoint.up * bulletSpeed;
     }
-
-    // Метод, который вызывается при уничтожении блока
     public void OnBlockDestroy()
     {
-        kills++;  // Увеличиваем счетчик убийств
-
-        // Увеличиваем частоту стрельбы в зависимости от количества убийств
+        kills++;  
         if(kills == 1)
         {   
-            //currentFireRate = 0.5f;  // Увеличиваем частоту (меньший интервал)
+            //currentFireRate = 0.5f;  
         }
         else if (kills == 2)
         {
-            //currentFireRate = 0.3f; // Еще быстрее
+            //currentFireRate = 0.3f; 
         }
         else if(kills >= 3)
         {
-            //currentFireRate = 0.1f;   // Максимальная скорость
+            //currentFireRate = 0.1f;  
         }
 
         if(kills == 20)

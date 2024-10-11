@@ -154,9 +154,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   block: {fileID: 2857388121086071091}
+  Bonus_Cannon: {fileID: 0}
+  Bonus_speedBullet: {fileID: 0}
+  Bonus_Lazer: {fileID: 0}
   HP: 5
   kills: 0
   healthText: {fileID: 1925541788826312189}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!222 &5089165113198081195
 CanvasRenderer:
   m_ObjectHideFlags: 0

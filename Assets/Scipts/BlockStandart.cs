@@ -5,12 +5,17 @@ public class BlockStandart : MonoBehaviour
 {
     private float speed = 0.5f;
     public GameObject block;
+    public GameObject Bonus_Cannon;
+    public GameObject Bonus_speedBullet;
+    public GameObject Bonus_Lazer;
     public float HP = 5f;
     private float currentHealth;
     public int kills;
 
     public TextMeshProUGUI healthText;
     private CannonScript cannonScript;
+
+    public LayerMask layerMask;
     private void Start()
     {
         currentHealth = HP;
@@ -31,6 +36,10 @@ public class BlockStandart : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth == 0)
         {
+            if(IsPrefabInLayer(gameObject))
+            {
+                Instantiate(Bonus_Cannon, block.transform.position, Quaternion.identity);
+            }
             cannonScript.OnBlockDestroy();
             DestroyBlock();
         }
@@ -45,5 +54,11 @@ public class BlockStandart : MonoBehaviour
     void UpdateHealthText()
     {
         healthText.text = "" + currentHealth;
+    }
+
+
+    bool IsPrefabInLayer(GameObject prefab)
+    {
+        return (layerMask == (layerMask | (1 << prefab.layer)));
     }
 }
