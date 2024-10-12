@@ -8,6 +8,9 @@ TagManager:
   - Block
   - Ground
   - bonus_cannon
+  - bonus_speed
+  - bonus_lazer
+  - floor
   layers:
   - Default
   - TransparentFX
@@ -16,8 +19,8 @@ TagManager:
   - Water
   - UI
   - Bonus_Cannon
-  - 
-  - 
+  - Bonus_Speed
+  - Bonus_lazer
   - 
   - 
   - 

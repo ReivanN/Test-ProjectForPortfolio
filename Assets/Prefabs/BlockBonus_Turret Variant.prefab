@@ -13,25 +13,17 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: -6182814331130890240, guid: 0967e6d29702c455887c55adac12c736, type: 3}
-      propertyPath: Bonus_Lazer
-      value: 
-      objectReference: {fileID: 6717537579512148954, guid: 3f67555ea223a4dafa07422163b56e73, type: 3}
-    - target: {fileID: -6182814331130890240, guid: 0967e6d29702c455887c55adac12c736, type: 3}
-      propertyPath: Bonus_Cannon
-      value: 
-      objectReference: {fileID: 6717537579512148954, guid: 3f67555ea223a4dafa07422163b56e73, type: 3}
-    - target: {fileID: -6182814331130890240, guid: 0967e6d29702c455887c55adac12c736, type: 3}
       propertyPath: layerMask.m_Bits
       value: 64
       objectReference: {fileID: 0}
     - target: {fileID: -6182814331130890240, guid: 0967e6d29702c455887c55adac12c736, type: 3}
-      propertyPath: Bonus_speedBullet
-      value: 
-      objectReference: {fileID: 6717537579512148954, guid: 3f67555ea223a4dafa07422163b56e73, type: 3}
+      propertyPath: cannonLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: -6182814331130890240, guid: 0967e6d29702c455887c55adac12c736, type: 3}
-      propertyPath: textPositionOffset
-      value: 
-      objectReference: {fileID: 5467672079075325940}
+      propertyPath: speedBulletLayerMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2857388121086071091, guid: 0967e6d29702c455887c55adac12c736, type: 3}
       propertyPath: m_Name
       value: BlockBonus_Turret Variant
@@ -106,8 +98,3 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0967e6d29702c455887c55adac12c736, type: 3}
---- !u!224 &5467672079075325940 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8141226003209752511, guid: 0967e6d29702c455887c55adac12c736, type: 3}
-  m_PrefabInstance: {fileID: 4258825399622350923}
-  m_PrefabAsset: {fileID: 0}

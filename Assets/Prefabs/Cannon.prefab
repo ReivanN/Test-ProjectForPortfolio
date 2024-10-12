@@ -188,6 +188,7 @@ MonoBehaviour:
   bulletSpeed: 10
   kills: 0
   win: 0
+  bullet: {fileID: -2930699040211155576, guid: 0402c8ed8fa8e4ba0a63f0f34d78987c, type: 3}
   bonus_Canon: {fileID: -1011101592382880057, guid: 3f67555ea223a4dafa07422163b56e73, type: 3}
 --- !u!1 &3663753136178153599
 GameObject:

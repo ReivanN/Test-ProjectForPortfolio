@@ -154,13 +154,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   block: {fileID: 2857388121086071091}
-  Bonus_Cannon: {fileID: 0}
-  Bonus_speedBullet: {fileID: 0}
-  Bonus_Lazer: {fileID: 0}
+  Bonus_Cannon: {fileID: 6717537579512148954, guid: 3f67555ea223a4dafa07422163b56e73, type: 3}
+  Bonus_SpeedBullet: {fileID: 5584639207236602589, guid: 6d144ea95d6474d1bb2fe823a55d6be6, type: 3}
+  Bonus_Laser: {fileID: 1771175473300421099, guid: 4cfe6f99ab5bb4167946115b17570ab2, type: 3}
   HP: 20
   kills: 0
   healthText: {fileID: 1925541788826312189}
-  layerMask:
+  cannonLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  speedBulletLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  laserLayerMask:
     serializedVersion: 2
     m_Bits: 0
 --- !u!222 &5089165113198081195

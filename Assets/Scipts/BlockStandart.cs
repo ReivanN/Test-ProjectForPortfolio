@@ -6,8 +6,8 @@ public class BlockStandart : MonoBehaviour
     private float speed = 0.3f;
     public GameObject block;
     public GameObject Bonus_Cannon;
-    public GameObject Bonus_speedBullet;
-    public GameObject Bonus_Lazer;
+    public GameObject Bonus_SpeedBullet;
+    public GameObject Bonus_Laser;
     public float HP = 5f;
     private float currentHealth;
     public int kills;
@@ -15,13 +15,18 @@ public class BlockStandart : MonoBehaviour
     public TextMeshProUGUI healthText;
     private CannonScript cannonScript;
 
-    public LayerMask layerMask;
+    // LayerMasks for different bonuses
+    public LayerMask cannonLayerMask;
+    public LayerMask speedBulletLayerMask;
+    public LayerMask laserLayerMask;
+
     private void Start()
     {
         currentHealth = HP;
         UpdateHealthText();
         cannonScript = FindFirstObjectByType<CannonScript>();
     } 
+    
     void Update()
     {
         Debug.LogError("Kills " + kills);
@@ -34,12 +39,22 @@ public class BlockStandart : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
-            if(IsPrefabInLayer(gameObject))
+            // Check which layer the object is in and instantiate the appropriate bonus
+            if(IsPrefabInLayer(gameObject, cannonLayerMask))
             {
                 Instantiate(Bonus_Cannon, block.transform.position, Quaternion.identity);
             }
+            else if(IsPrefabInLayer(gameObject, speedBulletLayerMask))
+            {
+                Instantiate(Bonus_SpeedBullet, block.transform.position, Quaternion.identity);
+            }
+            else if(IsPrefabInLayer(gameObject, laserLayerMask))
+            {
+                Instantiate(Bonus_Laser, block.transform.position, Quaternion.identity);
+            }
+
             cannonScript.OnBlockDestroy();
             DestroyBlock();
         }
@@ -53,12 +68,11 @@ public class BlockStandart : MonoBehaviour
 
     void UpdateHealthText()
     {
-        healthText.text = "" + currentHealth;
+        healthText.text = currentHealth.ToString();
     }
 
-
-    bool IsPrefabInLayer(GameObject prefab)
+    bool IsPrefabInLayer(GameObject prefab, LayerMask mask)
     {
-        return (layerMask == (layerMask | (1 << prefab.layer)));
+        return (mask == (mask | (1 << prefab.layer)));
     }
 }

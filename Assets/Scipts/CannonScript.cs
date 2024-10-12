@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
 
 public class CannonScript : MonoBehaviour
 {
@@ -12,9 +13,11 @@ public class CannonScript : MonoBehaviour
     public Transform cannonSpawnPoint;
     public float bulletSpeed = 10f;
     private float currentFireRate = 0.11f;
+    private float fireRateminus = 1f;
     private float nextFireTime = 0f;
     public int kills;
     public bool win = false;
+    [SerializeField] private Bullet bullet;
 
     [SerializeField] private Bonus_Canon bonus_Canon;
     void Start()
@@ -28,6 +31,7 @@ public class CannonScript : MonoBehaviour
     void Update()
     {
         Debug.LogError("Current bullet speed: " + currentFireRate);
+        Debug.LogError(bullet.damage + "damage");
 
         if (Time.time > nextFireTime)
         {
@@ -94,6 +98,18 @@ public class CannonScript : MonoBehaviour
             Instantiate(Cannon, cannonSpawnPoint.position, cannonSpawnPoint.rotation);
             Cannon.transform.SetParent(CannonParent.transform);
             Cannon.transform.localScale = new Vector3(0.25f, 0.5f, 0);
+            Destroy(other.gameObject);
+        }
+
+        if(other.gameObject.tag == "bonus_speed")
+        {
+            bullet.damage += fireRateminus;
+            Destroy(other.gameObject);
+        }
+
+        if(other.gameObject.tag == "bonus_lazer")
+        {
+            currentFireRate = 0f;
             Destroy(other.gameObject);
         }
     }

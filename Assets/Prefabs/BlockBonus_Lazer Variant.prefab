@@ -10,11 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6182814331130890240, guid: 0967e6d29702c455887c55adac12c736, type: 3}
       propertyPath: HP
-      value: 100
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: -6182814331130890240, guid: 0967e6d29702c455887c55adac12c736, type: 3}
+      propertyPath: laserLayerMask.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2857388121086071091, guid: 0967e6d29702c455887c55adac12c736, type: 3}
       propertyPath: m_Name
       value: BlockBonus_Lazer Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2857388121086071091, guid: 0967e6d29702c455887c55adac12c736, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3887719568047715293, guid: 0967e6d29702c455887c55adac12c736, type: 3}
       propertyPath: m_Color.b

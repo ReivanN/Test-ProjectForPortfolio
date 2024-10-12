@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage = 1f;
+    public float damage;
+    private void Start()
+    {
+        damage = 1f;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
     
@@ -11,6 +15,11 @@ public class Bullet : MonoBehaviour
         {
             Debug.LogError("TakeDamage");
             block.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.tag == "floor")
+        {
             Destroy(gameObject);
         }
         
