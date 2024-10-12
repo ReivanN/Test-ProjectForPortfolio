@@ -13,7 +13,8 @@ public class CannonScript : MonoBehaviour
     public Transform cannonSpawnPoint;
     public float bulletSpeed = 10f;
     private float currentFireRate = 0.11f;
-    private float fireRateminus = 1f;
+    private float bonusDamage = 1f;
+    private float startDamage = 1f;
     private float nextFireTime = 0f;
     public int kills;
     public bool win = false;
@@ -22,6 +23,7 @@ public class CannonScript : MonoBehaviour
     [SerializeField] private Bonus_Canon bonus_Canon;
     void Start()
     {
+        bullet.damage = startDamage;
         Camera cam = Camera.main;
         Vector3 screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
         minX = cam.ScreenToWorldPoint(new Vector3(0, 0, 0)).x;
@@ -30,8 +32,8 @@ public class CannonScript : MonoBehaviour
 
     void Update()
     {
-        Debug.LogError("Current bullet speed: " + currentFireRate);
-        Debug.LogError(bullet.damage + "damage");
+        //Debug.LogError("Current bullet speed: " + currentFireRate);
+        //Debug.LogError(bullet.damage + "damage");
 
         if (Time.time > nextFireTime)
         {
@@ -103,12 +105,15 @@ public class CannonScript : MonoBehaviour
 
         if(other.gameObject.tag == "bonus_speed")
         {
-            bullet.damage += fireRateminus;
+            //Bullet bruh = FindAnyObjectByType<Bullet>();    
+            bullet.damage += bonusDamage;
             Destroy(other.gameObject);
         }
 
         if(other.gameObject.tag == "bonus_lazer")
         {
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.linearVelocityX = CannonParent.transform.localScale.x * bulletSpeed;
             currentFireRate = 0f;
             Destroy(other.gameObject);
         }

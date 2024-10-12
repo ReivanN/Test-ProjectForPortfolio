@@ -29,7 +29,7 @@ public class BlockStandart : MonoBehaviour
     
     void Update()
     {
-        Debug.LogError("Kills " + kills);
+        //Debug.LogError("Kills " + kills);
         if(block != null)
         {
             block.transform.position -= new Vector3(0, speed * Time.deltaTime, 0);

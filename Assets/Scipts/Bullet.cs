@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage;
-    private void Start()
+    public float damage = 1f;
+
+    public void Start()
     {
-        damage = 1f;
+         //damage = 1f;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -22,6 +23,7 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
         
     }
 }
