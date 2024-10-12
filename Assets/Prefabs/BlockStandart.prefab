@@ -170,8 +170,6 @@ MonoBehaviour:
   laserLayerMask:
     serializedVersion: 2
     m_Bits: 0
-  Bonus: {fileID: 8300000, guid: 7c55bf19cf6e74c769b85a1f5dcbaeb0, type: 3}
-  bonusAudioSource: {fileID: -6995270153000321316}
 --- !u!222 &5089165113198081195
 CanvasRenderer:
   m_ObjectHideFlags: 0
