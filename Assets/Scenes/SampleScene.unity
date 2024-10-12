@@ -284,7 +284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &267016514
 RectTransform:
   m_ObjectHideFlags: 0
@@ -947,7 +947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &599876436
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1846,6 +1846,11 @@ MonoBehaviour:
   rowSpacing: 0.6
   startPosition: {x: -1.6, y: 10, z: 0}
   win: 0
+  maxHp: 100
+  minDistance: 1
+  maxDistance: 5
+  canvas: {fileID: 1263714586}
+  Win: {fileID: 267016513}
 --- !u!1 &1666787503
 GameObject:
   m_ObjectHideFlags: 0

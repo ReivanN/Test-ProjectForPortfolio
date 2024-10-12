@@ -124,7 +124,8 @@ public class CannonScript : MonoBehaviour
         {
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.linearVelocityX = CannonParent.transform.localScale.x * bulletSpeed;
-            currentFireRate = 0f;
+            currentFireRate = 0.01f;
+            bullet.damage = 0.5f;
             pickUpSource.PlayOneShot(PickupSound);
             Destroy(other.gameObject);
         }

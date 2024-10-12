@@ -14,6 +14,10 @@ public class GridSpawner : MonoBehaviour
     private List<GameObject> spawnedBlocks = new List<GameObject>();
     public bool win = false;
 
+    public int maxHp = 300;
+    public float minDistance = 1f; 
+    public float maxDistance = 5f;
+
     public Canvas canvas;
     public GameObject Win;
 
@@ -32,6 +36,11 @@ public class GridSpawner : MonoBehaviour
                 GameObject blockPrefab = GetRandomPrefab();
                 GameObject block = Instantiate(blockPrefab, position, Quaternion.identity);
                 spawnedBlocks.Add(block);
+                
+                // Вычисление HP в зависимости от расстояния
+                BlockStandart blockComponent = block.GetComponent<BlockStandart>();
+                float distance = Vector3.Distance(position, startPosition);
+                blockComponent.HP = CalculateHP(distance);
             }
         }
     }
@@ -50,12 +59,18 @@ public class GridSpawner : MonoBehaviour
         }
         return blockPrefabs[0];
     }
+    int CalculateHP(float distance)
+    {
+        float normalizedDistance = Mathf.Clamp01((distance - minDistance) / (maxDistance - minDistance));
+        return Mathf.Max(5, (int)(maxHp * (1 - normalizedDistance)));
+    }
     public void OnBlockDestroyed(GameObject block)
     {
         spawnedBlocks.Remove(block);
 
         if (spawnedBlocks.Count == 0)
         {
+            Time.timeScale = 0f;
             canvas.gameObject.SetActive(true);
             Win.SetActive(true);
             win = true;
