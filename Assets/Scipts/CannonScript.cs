@@ -21,6 +21,11 @@ public class CannonScript : MonoBehaviour
     [SerializeField] private Bullet bullet;
 
     [SerializeField] private Bonus_Canon bonus_Canon;
+
+    public AudioClip shootSound;
+    public AudioClip PickupSound;
+    public AudioSource audioSource;
+    public AudioSource pickUpSource;
     void Start()
     {
         bullet.damage = startDamage;
@@ -28,6 +33,9 @@ public class CannonScript : MonoBehaviour
         Vector3 screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
         minX = cam.ScreenToWorldPoint(new Vector3(0, 0, 0)).x;
         maxX = screenBounds.x;
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        audioSource = audioSources[0];
+        pickUpSource = audioSources[1];
     }
 
     void Update()
@@ -70,6 +78,7 @@ public class CannonScript : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.linearVelocity = bulletSpawnPoint.up * bulletSpeed;
+        audioSource.PlayOneShot(shootSound);
     }
     public void OnBlockDestroy()
     {
@@ -100,12 +109,13 @@ public class CannonScript : MonoBehaviour
             Instantiate(Cannon, cannonSpawnPoint.position, cannonSpawnPoint.rotation);
             Cannon.transform.SetParent(CannonParent.transform);
             Cannon.transform.localScale = new Vector3(0.25f, 0.5f, 0);
+            pickUpSource.PlayOneShot(PickupSound);
             Destroy(other.gameObject);
         }
 
         if(other.gameObject.tag == "bonus_speed")
         {
-            //Bullet bruh = FindAnyObjectByType<Bullet>();    
+            pickUpSource.PlayOneShot(PickupSound);   
             bullet.damage += bonusDamage;
             Destroy(other.gameObject);
         }
@@ -115,6 +125,7 @@ public class CannonScript : MonoBehaviour
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.linearVelocityX = CannonParent.transform.localScale.x * bulletSpeed;
             currentFireRate = 0f;
+            pickUpSource.PlayOneShot(PickupSound);
             Destroy(other.gameObject);
         }
     }

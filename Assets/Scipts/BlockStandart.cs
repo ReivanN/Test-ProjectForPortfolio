@@ -20,6 +20,7 @@ public class BlockStandart : MonoBehaviour
     public LayerMask speedBulletLayerMask;
     public LayerMask laserLayerMask;
 
+
     private void Start()
     {
         currentHealth = HP;
@@ -38,10 +39,10 @@ public class BlockStandart : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            // Check which layer the object is in and instantiate the appropriate bonus
             if(IsPrefabInLayer(gameObject, cannonLayerMask))
             {
                 Instantiate(Bonus_Cannon, block.transform.position, Quaternion.identity);
