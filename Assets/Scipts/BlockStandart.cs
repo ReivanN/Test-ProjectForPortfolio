@@ -19,12 +19,13 @@ public class BlockStandart : MonoBehaviour
     public LayerMask cannonLayerMask;
     public LayerMask speedBulletLayerMask;
     public LayerMask laserLayerMask;
-
+    private GridSpawner gridSpawner;
 
     private void Start()
     {
         currentHealth = HP;
         UpdateHealthText();
+        gridSpawner = FindFirstObjectByType<GridSpawner>();
         cannonScript = FindFirstObjectByType<CannonScript>();
     } 
     
@@ -64,6 +65,7 @@ public class BlockStandart : MonoBehaviour
 
     private void DestroyBlock()
     {
+        gridSpawner.OnBlockDestroyed(gameObject); 
         Destroy(gameObject);
     }
 
