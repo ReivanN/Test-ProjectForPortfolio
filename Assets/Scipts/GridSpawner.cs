@@ -36,8 +36,6 @@ public class GridSpawner : MonoBehaviour
                 GameObject blockPrefab = GetRandomPrefab();
                 GameObject block = Instantiate(blockPrefab, position, Quaternion.identity);
                 spawnedBlocks.Add(block);
-                
-                // Вычисление HP в зависимости от расстояния
                 BlockStandart blockComponent = block.GetComponent<BlockStandart>();
                 float distance = Vector3.Distance(position, startPosition);
                 blockComponent.HP = CalculateHP(distance);

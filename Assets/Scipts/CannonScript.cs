@@ -12,7 +12,7 @@ public class CannonScript : MonoBehaviour
     public Transform bulletSpawnPoint;
     public Transform cannonSpawnPoint;
     public float bulletSpeed = 10f;
-    private float currentFireRate = 0.11f;
+    private float currentFireRate = 0.5f;
     private float bonusDamage = 1f;
     private float startDamage = 1f;
     private float nextFireTime = 0f;
