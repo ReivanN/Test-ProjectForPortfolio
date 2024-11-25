@@ -108,7 +108,7 @@ public class CannonScript : MonoBehaviour
         {
             Instantiate(Cannon, cannonSpawnPoint.position, cannonSpawnPoint.rotation);
             Cannon.transform.SetParent(CannonParent.transform);
-            Cannon.transform.localScale = new Vector3(0.25f, 0.5f, 0);
+            Cannon.transform.localScale = new Vector3(1f, 3f, 1f);
             pickUpSource.PlayOneShot(PickupSound);
             Destroy(other.gameObject);
         }
